@@ -7,19 +7,39 @@ class Currency
   end
 
   def ==(other)
-    @symbol + other.symbol
+    @symbol
   end
 
   def symbol
     @symbol
   end
 
+  def amount
+    @amount
+  end
+
+  def +(other)
+    return Currency.new(@symbol, @amount + other.amount)
+  end
+
+  def -(other)
+    return Currency.new(@symbol, @amount - other.amount)
+  end
 end
 
+
 wallet1 = Currency.new("$", 3)
-wallet2 = Currency.new("$", 3)
+wallet2 = Currency.new("$", 2)
+
 # byebug
-puts wallet1.symbol == wallet2.symbol
+puts wallet3 = wallet1 - wallet2
+puts "#{wallet3.symbol} #{wallet3.amount}"
+
+# puts wallet1.amount
+# puts wallet1.symbol == wallet2.symbol
+
+
+
 
 
 # 1 USD "$" => 1 USD
