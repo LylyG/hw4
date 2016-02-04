@@ -16,30 +16,10 @@ class Currency
 
 end
 
-#   def wallet_amount
-#     puts "I have #{} in my wallet."
-#   end
-# end
-
 wallet1 = Currency.new("$", 3)
 wallet2 = Currency.new("$", 3)
 # byebug
 puts wallet1.symbol == wallet2.symbol
-
-# def +(other)
-#   @number + other.number
-# end
-#
-# def number
-#   @number
-# end
-# end
-#
-# two = Apple.new(2)
-# three = Apple.new(3)
-#
-# puts two + three
-
 
 
 # 1 USD "$" => 1 USD
