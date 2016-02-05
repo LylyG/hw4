@@ -26,9 +26,8 @@ class Currency
     return Currency.new(@symbol, @amount - other.amount)
   end
 
-  def match(symbol)
-    if @symbol != symbol
-    else
+  def match(other)
+    if @symbol != other.symbol
       raise "DifferentCurrencyCodeError"
     end
   end
