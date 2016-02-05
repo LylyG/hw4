@@ -1,13 +1,10 @@
 require 'byebug'
+require './currencyexception.rb'
 
 class Currency
   def initialize (symbol, amount)
     @symbol = symbol
     @amount = amount
-  end
-
-  def ==(other)
-    @symbol
   end
 
   def symbol
@@ -19,31 +16,37 @@ class Currency
   end
 
   def +(other)
-    return Currency.new(@symbol, @amount + other.amount)
+    if @symbol == other.symbol
+     @amount = other.amount + @amount
+     else raise DifferentCurrencyCodeError
+    end
+  end
+
+  def *(other)
+      if @symbol == other.symbol
+       @amount = other.amount * @amount
+       else raise DifferentCurrencyCodeError
+      end
   end
 
   def -(other)
-    return Currency.new(@symbol, @amount - other.amount)
+      if @symbol == other.symbol
+       @amount = @amount - other.amount
+      else raise DifferentCurrencyCodeError
+      end
   end
 
-  def match(other)
-    if @symbol != other.symbol
-      raise "DifferentCurrencyCodeError"
-    end
+  def ==(other)
+      @symbol == other.symbol && @amount == other.amount
   end
 end
 
-
-wallet1 = Currency.new("$", 3)
-wallet2 = Currency.new("$", 2)
+wallet1 = Currency.new("^", 3)
+wallet2 = Currency.new("$", 3)
 
 # byebug
-puts wallet1 + wallet2
-# puts "#{wallet3.symbol} #{wallet3.amount}"
-
-# puts wallet1.amount
-# puts wallet1.symbol == wallet2.symbol
-
+# puts wallet1 == wallet2
+puts wallet1 * wallet2
 
 
 
