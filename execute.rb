@@ -9,11 +9,12 @@ require './CurrencyConverter.rb'
 
 
 # currency_converter.convert(Currency.new(1, :USD), :USD) == Currency.new(1, :USD)
+
 hash = {USD: 1.0, EUR: 0.89, RUB: 0.013,
   INR: 0.015, CNY: 0.15, JPY: 0.0086, BRL: 0.25}
-blakes_money = Currency.new("$2500")
+wallet = Currency.new("$2500")
+desired = :EUR
 
-puts current_rates[]
-
-  # "₽"=>"RUB", "₹"=>"INR", "元"=>"CNY",
-    # "¥"=>"JPY", "R$"=>"BRL"}
+def convert (wallet, desired)
+  puts new_total = Currency.new(wallet.amount * hash[desired])
+end

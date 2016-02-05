@@ -56,8 +56,4 @@ class Currency
   def ==(other)
     return Currency.new(@symbol == other.symbol && @amount == other.amount)
   end
-
-  def to_s
-    "#{@symbol}#{@amount}"
-  end
 end
