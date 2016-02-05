@@ -25,6 +25,13 @@ class Currency
   def -(other)
     return Currency.new(@symbol, @amount - other.amount)
   end
+
+  def ==(match)
+  if @symbol != symbol
+  else
+  raise "DifferentCurrencyCodeError"
+  end
+  end
 end
 
 
@@ -32,8 +39,8 @@ wallet1 = Currency.new("$", 3)
 wallet2 = Currency.new("$", 2)
 
 # byebug
-puts wallet3 = wallet1 - wallet2
-puts "#{wallet3.symbol} #{wallet3.amount}"
+puts wallet1 == wallet2
+# puts "#{wallet3.symbol} #{wallet3.amount}"
 
 # puts wallet1.amount
 # puts wallet1.symbol == wallet2.symbol
