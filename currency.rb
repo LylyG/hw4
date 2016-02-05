@@ -1,11 +1,20 @@
 require 'byebug'
 require './currencyexception.rb'
+require './currencyexception2.rb'
 
 class Currency
-  def initialize (symbol, amount)
+  def initialize (amount, symbol=nil)
     @symbol = symbol
     @amount = amount
-    @code = {"$"=>"USD", "€"=>"EUR", "₽"=>"RUB", "₹"=>"INR", "元"=>"CNY", "¥"=>"JPY", "R$"=>"BRL"}
+    code = {"$"=>:USD, "€"=>:EUR, "₽"=>:RUB, "₹"=>:INR, "元"=>:CNY,
+      "¥"=>:JPY, "R$"=>:BRL}
+    if @symbol ==nil && @amount !=nil
+      breaker = amount.split("",2)
+      @amount = breaker[1].to_f
+      @symbol = code[breaker[0]]
+    else
+      raise UnknownCurrencyCodeError
+    end
   end
 
   def symbol
@@ -13,11 +22,7 @@ class Currency
   end
 
   def amount
-    @amount
-  end
-
-  def find_code
-    puts @code[@symbol]
+    @amount.to_f
   end
 
   def +(other)
@@ -53,6 +58,6 @@ class Currency
   end
 
   def to_s
-    "#{@symbol} #{@amount}"
+    "#{@symbol}#{@amount}"
   end
 end
