@@ -5,6 +5,7 @@ class Currency
   def initialize (symbol, amount)
     @symbol = symbol
     @amount = amount
+    @code = {"$"=>"USD", "€"=>"EUR", "₽"=>"RUB", "₹"=>"INR", "元"=>"CNY", "¥"=>"JPY", "R$"=>"BRL"}
   end
 
   def symbol
@@ -13,6 +14,10 @@ class Currency
 
   def amount
     @amount
+  end
+
+  def find_code
+    puts @code[@symbol]
   end
 
   def +(other)
@@ -41,20 +46,13 @@ class Currency
   end
 end
 
-wallet1 = Currency.new("^", 3)
-wallet2 = Currency.new("$", 3)
-
-# byebug
-# puts wallet1 == wallet2
-puts wallet1 * wallet2
+wallet1 = Currency.new("¥", 3)
+wallet1.find_code
 
 
-
-
-# 1 USD "$" => 1 USD
-# 1 EUR "€" = 0.89(USD)
-# 1 RUB "₽" = 0.013(USD)
-# 1 INR "₹" = 0.015(USD)
-# 1 CNY "元" = 0.15(USD)
-# 1 JPY	"¥" = 0.0086(USD)
-# 1 BRL "R$"  = 0.26(USD)
+  # 1 EUR "€" = 0.89(USD)
+  # 1 RUB "₽" = 0.013(USD)
+  # 1 INR "₹" = 0.015(USD)
+  # 1 CNY "元" = 0.15(USD)
+  # 1 JPY	"¥" = 0.0086(USD)
+  # 1 BRL "R$"  = 0.26(USD)}
