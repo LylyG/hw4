@@ -22,37 +22,37 @@ class Currency
 
   def +(other)
     if @symbol == other.symbol
-     @amount = other.amount + @amount
-     else raise DifferentCurrencyCodeError
+      return Currency.new(@symbol, other.amount + @amount)
+    else
+      raise DifferentCurrencyCodeError
     end
   end
 
   def *(other)
-      if @symbol == other.symbol
-       @amount = other.amount * @amount
-       else raise DifferentCurrencyCodeError
-      end
+    if @symbol == other.symbol
+      return Currency.new(other.amount * @amount)
+    else
+      raise DifferentCurrencyCodeError
+    end
   end
 
   def -(other)
-      if @symbol == other.symbol
-       @amount = @amount - other.amount
-      else raise DifferentCurrencyCodeError
-      end
+    if @symbol == other.symbol
+      return Currency.new(@amount - other.amount)
+    else
+      raise DifferentCurrencyCodeError
+    end
   end
+
+   def -(other)
+     return Currency.new(@symbol, @amount - other.amount)
+   end
 
   def ==(other)
-      @symbol == other.symbol && @amount == other.amount
+    return Currency.new(@symbol == other.symbol && @amount == other.amount)
+  end
+
+  def to_s
+    "#{@symbol} #{@amount}"
   end
 end
-
-wallet1 = Currency.new("¥", 3)
-wallet1.find_code
-
-
-  # 1 EUR "€" = 0.89(USD)
-  # 1 RUB "₽" = 0.013(USD)
-  # 1 INR "₹" = 0.015(USD)
-  # 1 CNY "元" = 0.15(USD)
-  # 1 JPY	"¥" = 0.0086(USD)
-  # 1 BRL "R$"  = 0.26(USD)}
