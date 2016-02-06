@@ -1,4 +1,5 @@
 require 'byebug'
+require './currencyconverter.rb'
 require './currencyexception.rb'
 require './currencyexception2.rb'
 
@@ -12,8 +13,6 @@ class Currency
       breaker = amount.split("",2)
       @amount = breaker[1].to_f
       @symbol = code[breaker[0]]
-    else
-      raise UnknownCurrencyCodeError
     end
   end
 
