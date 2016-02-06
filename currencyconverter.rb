@@ -5,25 +5,17 @@ class CurrencyConverter
   def initialize (money, desired_rate)
     @money = money
     @desired_rate = desired_rate
-    @hash = {USD: 1.0, EUR: 0.89, RUB: 0.013,
-            INR: 0.015, CNY: 0.15, JPY: 0.0086, BRL: 0.25}
+    @hash = {USD: 1.0, EUR: 0.89, RUB: 77,
+            INR: 68, CNY: 6.58, JPY: 117, BRL: 3.9}
   end
 
   def desired_rate
     @desired_rate
   end
 
-  # def money
-  #   @money
-  # end
-
   def hash
     @hash
   end
-
-  # def amount
-  #   @amount
-  # end
 
   def convert(money, desired_rate)
     new_amount = money.to_f * @hash[desired_rate]
