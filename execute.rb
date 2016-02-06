@@ -10,10 +10,12 @@ hash = {USD: 1.0, EUR: 0.89, RUB: 0.013,
 desired_rate = :BRL
 
 wallet1 = Currency.new("$20")
-# new_total = Currency.new((wallet1.amount * hash[desired_rate]).to_s)
+new_total = wallet1.amount * hash[desired_rate]
 #
-#  def to_s
-#     new_total
-#  end
-#
- puts wallet1.convert
+puts new_total, desired_rate.to_s
+# #
+# #  def to_s
+# #     new_total
+# #  end
+# #
+  # puts wallet1.convert

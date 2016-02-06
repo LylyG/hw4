@@ -38,6 +38,6 @@ class CurrencyConverter
   def convert(amount)
     # new_total = Currency.new(wallet1.amount * hash[desired_rate])
     new_total = Currency.new((wallet1.amount * hash[desired_rate]).to_s)
-    puts "#{new_total}" + "#{desired_rate}"
+    puts "#{new_total}" , "#{desired_rate}"
   end
 end
